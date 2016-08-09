@@ -16,17 +16,17 @@ Route::get('/',function(){
 	return view('layout.wellcom');
 });
 
-Route::get('test',function(){
-	$post = member::all();
-	$data = null;
-	$i = 0;
-	foreach ($post as $key => $pos) {
-		$data[$i] = $pos;
-		$i++;
-	}
-	$i = 5;
-	echo $data[5]['name'];
-});
+// Route::get('test',function(){
+// 	$post = member::all();
+// 	$data = null;
+// 	$i = 0;
+// 	foreach ($post as $key => $pos) {
+// 		$data[$i] = $pos;
+// 		$i++;
+// 	}
+// 	$i = 5;
+// 	echo $data[5]['name'];
+// });
 
 // Route::get('member',function(){
 // 	return view('layout.member');
@@ -46,7 +46,7 @@ Route::get('forum',['as'=>'forum','uses'=>'ForumController@index']);
 
 Route::get('log',['as'=>'log','uses'=>'LogController@index']);
 
-Route::get('member_edit',['as'=>'member_edit','uses'=>'MemberController@edit']);
+Route::post('member_edit',['as'=>'member_edit','uses'=>'MemberController@update']);
 
 Route::get('newmember',function(){
 	return view('layout.newmember');
@@ -55,3 +55,4 @@ Route::get('newmember',function(){
 Route::get('forumedit',function(){
 	return view('layout.forumedit');
 });
+

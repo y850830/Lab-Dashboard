@@ -47,10 +47,28 @@
                                 </div>
                                 <div class="modal-body">
                                     <div id ="MBedit" ></div>
+                                    {{ Form::open(array('route' => 'member_edit')) }}
+
+                                        <div class="form-group">
+                                        {{ Form::label('name', '人員姓名') }}
+                                        {{ Form::text('name', '', ['class' => 'form-control']) }}
+                                        </div>
+
+                                        <div class="form-group">
+                                        {{ Form::label('cellphone', '聯絡資訊') }}
+                                        {{ Form::text('cellphone', '', ['class' => 'form-control']) }}
+                                        </div>
+                                        <div class="form-group">
+                                        {{ Form::label('ID', 'ID') }}
+                                        {{ Form::text('ID', '', ['class' => 'form-control']) }}
+                                        </div>
+
+                                        <button class="btn btn-success" type="submit">確認</button>
+
+                                    {{ Form::close() }}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
-                                    <button type="button" class="btn btn-default" onclick="mbEdit()">確認</button>
                                 </div>
                                 </div>
                             </div>

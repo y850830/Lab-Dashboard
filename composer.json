@@ -15,7 +15,8 @@
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
         "recca0120/laravel-tracy":"^1.0",
-        "recca0120/terminal":"^2.0"
+        "recca0120/terminal":"^1.5",
+        "laravelcollective/html": "5.2.*"
 
     },
     "autoload": {

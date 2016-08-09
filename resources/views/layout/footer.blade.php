@@ -35,48 +35,4 @@
               ) 
           );
     }
-
-    function setEdit(i){
-        name = document.getElementById(i+"_1").innerHTML;
-        cellphone = document.getElementById(i+"_2").innerHTML;
-        ID = document.getElementById(i+"_3").innerHTML;
-        console.log(name,cellphone,ID);
-        document.getElementById("MBedit").innerHTML='<input type="text" value="'+name+'" id="Mname" /> <input type="text" value="'+cellphone+'" id="Mcellphone" /> <input type="text" value="'+ID+'" id="MID" />';
-        
-    }
-
-    function mbEdit(branchNm) {
-
-        var newdata = {
-            "name":document.getElementById("Mname").value,
-            "cellphone":document.getElementById("Mcellphone").value,
-            "ID":document.getElementById("MID").value
-        }
-
-        var URL ="http://localhost:8000/member_edit"
-
-        console.log(newdata);
-         
-        $.ajax(            
-        {
-            url:URL,
-            cache: false,
-            data:newdata,
-            dataType:'josn',
-            type:"POST",                    
-
-            success: function(response)       
-            {
-                // alert("work");
-            },
-             
-            error:  function(xhr, ajaxOptions, thrownError)
-            { 
-            // alert("error");
-            // alert(xhr.status); 
-            // alert(thrownError);  
-            }
-         
-        });
-    }
 </script>
