@@ -17,7 +17,7 @@
     @section('content')
     @show
 <footer>
-    @include('layout.NMfooter')
+    @include('layout.MBfooter')
 </footer>
 
 </body>

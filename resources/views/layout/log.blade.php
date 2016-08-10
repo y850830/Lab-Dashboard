@@ -1,4 +1,5 @@
 @extends('layout.frame')
+@section('content')
         <div class="container">
         <div id="page-content-wrapper">
             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
@@ -23,7 +24,5 @@
                 </div>
             </div>
         </div>
-
-@section('context')
 
 @endsection

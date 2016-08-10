@@ -1,4 +1,4 @@
-@extends('layout.frame')
+@extends('layout.MBframe')
 @section('content')
     <?php
         $i=0;
@@ -10,7 +10,7 @@
         $i=0;
     ?>
     <script>
-        var name=0,cellphone=0,ID=0;
+        var ID=0;
         var txtArr = new Object();
         txtArr = [<?= implode(',',$mdata) ?>];
         MBcount = <?=count($mdata)?>;

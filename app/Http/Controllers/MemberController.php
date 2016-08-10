@@ -89,8 +89,10 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $delData = member::where('ID', '=', "21")->delete();
+        $post = member::all();
+        return view('layout.member',['post' => $post]);
     }
 }

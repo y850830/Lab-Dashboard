@@ -28,31 +28,19 @@ Route::get('/',function(){
 // 	echo $data[5]['name'];
 // });
 
-// Route::get('member',function(){
-// 	return view('layout.member');
-// });
-
-// Route::get('forum',function(){
-// 	return view('layout.forum');
-// });
-
-// Route::get('log',function(){
-// 	return view('layout.log');
-// });
-
 Route::get('member',['as'=>'member','uses'=>'MemberController@index']);
-
-Route::get('forum',['as'=>'forum','uses'=>'ForumController@index']);
-
-Route::get('log',['as'=>'log','uses'=>'LogController@index']);
 
 Route::post('member_edit',['as'=>'member_edit','uses'=>'MemberController@update']);
 
 Route::post('member_new',['as'=>'member_new','uses'=>'MemberController@create']);
 
-Route::get('newmember',function(){
-	return view('layout.newmember');
-});
+Route::post('member_del',['as'=>'member_del','uses'=>'MemberController@destroy']);
+
+Route::get('forum',['as'=>'forum','uses'=>'ForumController@index']);
+
+Route::post('forum_edit',['as'=>'forum_edit','uses'=>'ForumController@update']);
+
+Route::get('log',['as'=>'log','uses'=>'LogController@index']);
 
 Route::get('forumedit',function(){
 	return view('layout.forumedit');

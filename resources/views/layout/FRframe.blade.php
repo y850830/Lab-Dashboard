@@ -17,7 +17,7 @@
     @section('content')
     @show
 <footer>
-    @include('layout.footer')
+    @include('layout.FRfooter')
 </footer>
 
 </body>

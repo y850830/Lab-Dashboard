@@ -1,4 +1,20 @@
-@extends('layout.frame')
+@extends('layout.FRframe')
+@section('content')
+    <?php
+        $i=0;
+        $mdata = null;
+        foreach ($post as $key => $data) {
+            $mdata[$i] = $data;
+            $i++;
+        }
+        $i=0;
+    ?>
+    <script>
+        var title ="";
+        var txtArr = new Object();
+        txtArr = [<?= implode(',',$mdata) ?>];
+        FRcount = <?=count($mdata)?>;
+    </script>
         <div class="container">
         <div id="page-content-wrapper">
             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
@@ -9,24 +25,51 @@
                         <h1>討論區管理</h1>
                         <br>
                         <br>
-                        <table class="TB_COLLAPSE">
+                        <table class="TB_COLLAPSE" id = "FR">
                           <thead>
                             <tr>
                               <th>討論區名稱</th>
                               <th>規則大綱</th>
                             </tr>
                           </thead>
-                            <tr>
-                              <td>TF foot</td>
-                              <td>TF foot</td>
-                              <td><a href="http://localhost:8000/layout" class="css_btn_class" id="menu-toggle">Toggle Menu</a></td>
-                            </tr>
-                          <tr>
-                            <td>row 1</td>
-                            <td>row 1</td>
-                            <td><a href="http://localhost:8000/layout" class="css_btn_class" id="menu-toggle">Toggle Menu</a></td>
-                          </tr>
-                        </table>                          
+                        </table> 
+
+                        {{-- edit --}}
+                        <div id="editModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">內容編輯</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div id ="MBedit" ></div>
+                                    {{ Form::open(array('route' => 'forum_edit')) }}
+
+                                        <div class="form-group">
+                                        {{ Form::label('title', '討論區') }}
+                                        {{ Form::text('title', '', ['class' => 'form-control']) }}
+                                        </div>
+
+                                        <div class="form-group">
+                                        {{ Form::label('context', '內文') }} 
+                                        {{ Form::textarea('context', '', ['class' => 'form-control']) }}
+                                        </div>
+
+
+                                        <button class="btn btn-success" type="submit">確認</button>
+
+                                    {{ Form::close() }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+
                             </div>
                         </div>
                     </div>
@@ -34,6 +77,6 @@
             </div>
         </div>
 
-@section('context')
+
 
 @endsection

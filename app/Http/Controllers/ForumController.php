@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Input;
+
 use App\Http\Requests;
+
+use App\Models\forum;
 
 class ForumController extends Controller
 {
@@ -15,7 +19,8 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return view('layout.forum');
+        $post = forum::all();
+        return view('layout.forum',['post' => $post]);
     }
 
     /**
@@ -25,7 +30,7 @@ class ForumController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -68,9 +73,12 @@ class ForumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $input = Input::get();
+        $up = forum::where('title', '=', $input['title'])->update(array('title' => $input['title'],'context' => $input['context']));
+        $post = forum::all();
+        return view('layout.forum',['post' => $post]);
     }
 
     /**
