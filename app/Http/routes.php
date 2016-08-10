@@ -48,6 +48,8 @@ Route::get('log',['as'=>'log','uses'=>'LogController@index']);
 
 Route::post('member_edit',['as'=>'member_edit','uses'=>'MemberController@update']);
 
+Route::post('member_new',['as'=>'member_new','uses'=>'MemberController@create']);
+
 Route::get('newmember',function(){
 	return view('layout.newmember');
 });

@@ -24,10 +24,10 @@
                     	<br>
                         <h1>人員管理</h1>
                         <div style="top:45px;left:800px;position:absolute;">
-                            <a href="http://localhost:8000/newmember" class="css_btn_class">新增成員</a>
+                            <button class="css_btn_class" data-toggle=modal data-target=#newModal>新增成員</button>
                         </div>
                         <br>
-                        <table class="MB_COLLAPSE" id="test">
+                        <table class="MB_COLLAPSE" id="MB">
                           <thead>
                             <tr>
                               <th>人員姓名</th>
@@ -36,7 +36,9 @@
                             </tr>
                           </thead>
                         </table>
-                            <div id="myModal" class="modal fade" role="dialog">
+
+                            {{-- edit MB --}}
+                            <div id="editModal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
 
                                 <!-- Modal content-->
@@ -60,7 +62,44 @@
                                         </div>
                                         <div class="form-group">
                                         {{ Form::label('ID', 'ID') }}
-                                        {{ Form::text('ID', '', ['class' => 'form-control']) }}
+                                        {{ Form::text('ID','', ['class' => 'form-control']) }}
+                                        </div>
+
+                                        <button class="btn btn-success" type="submit">確認</button>
+
+                                    {{ Form::close() }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                                {{-- new MB --}}
+                                <div id="newModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">成員新增</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div id ="MBedit" ></div>
+                                    {{ Form::open(array('route' => 'member_new')) }}
+
+                                        <div class="form-group">
+                                        {{ Form::label('Nname', '人員姓名') }}
+                                        {{ Form::text('Nname', '', ['class' => 'form-control']) }}
+                                        </div>
+
+                                        <div class="form-group">
+                                        {{ Form::label('Ncellphone', '聯絡資訊') }}
+                                        {{ Form::text('Ncellphone', '', ['class' => 'form-control']) }}
+                                        </div>
+                                        <div class="form-group">
+                                        {{ Form::label('NID', 'ID') }}
+                                        {{ Form::text('NID','', ['class' => 'form-control']) }}
                                         </div>
 
                                         <button class="btn btn-success" type="submit">確認</button>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Input;
+
 use App\Http\Requests;
 
 use App\Models\member;
@@ -26,9 +28,12 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        
+        $input = Input::get();
+        $Nuser = member::create(array('name' => $input['Nname'],'cellphone' => $input['Ncellphone'],'ID' => $input['NID']));
+        $post = member::all();
+        return view('layout.member',['post' => $post]);
     }
 
     /**
@@ -58,16 +63,9 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $post = member::where('ID','=',$id['ID'])->get();
-        $post->update([
-            'name' => $id['name'],
-            'cellphone' => $id['cellphone'],
-            'ID' => $id['ID'],
-        ]);
-        $post = member::all();
-        return view('layout.member',['post' => $post]);
+    public function edit()
+    {   
+
     }
 
     /**
@@ -77,9 +75,12 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $input = Input::get();
+        $up = member::where('ID', '=', $input['ID'])->update(array('name' => $input['name'],'cellphone' => $input['cellphone']));
+        $post = member::all();
+        return view('layout.member',['post' => $post]);
     }
 
     /**

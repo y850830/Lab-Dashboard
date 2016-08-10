@@ -15,7 +15,7 @@
     });
  
     for(var i = 0 ; i < MBcount ; i++){ 
-        $("#test").append( 
+        $("#MB").append( 
               $("<tr>").append( 
                  $("<td>").html( 
                       "<label id="+(i+1)+"_1>"+txtArr[i]['name']+"</label>" 
@@ -30,9 +30,14 @@
                       "<button  class=css_btn_class>刪除</button>" 
                   ),
                   $("<td>").html( 
-                      "<button id="+i+" class=css_btn_class data-toggle=modal data-target=#myModal onclick=setEdit("+(i+1)+");>編輯</button>" 
+                      "<button  class=css_btn_class data-toggle=modal data-target=#editModal onclick=setEdit("+(i+1)+");>編輯</button>" 
                   )  
               ) 
           );
+    }
+
+    function setEdit(i){
+        ID = document.getElementById(i+"_3").innerHTML;
+        document.getElementById("ID").value = ID     
     }
 </script>
