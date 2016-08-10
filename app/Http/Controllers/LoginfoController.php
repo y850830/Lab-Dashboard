@@ -4,15 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Input;
-
-use Illuminate\Support\Facades\Redirect; 
-
 use App\Http\Requests;
 
-use App\Models\member;
-
-class MemberController extends Controller
+class LoginfoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +15,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $post = member::all();
-        return view('layout.member',['post' => $post]);
+        return view('layout.loginfo');
     }
 
     /**
@@ -30,11 +23,9 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $input = Input::get();
-        $Nuser = member::create(array('name' => $input['Nname'],'cellphone' => $input['Ncellphone'],'ID' => $input['NID']));
-        return Redirect::route('member');
+        //
     }
 
     /**
@@ -56,6 +47,7 @@ class MemberController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**
@@ -64,9 +56,9 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
-    {   
-
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -76,11 +68,9 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $input = Input::get();
-        $up = member::where('ID', '=', $input['ID'])->update(array('name' => $input['name'],'cellphone' => $input['cellphone'],'ID' => $input['ID']));
-        return Redirect::route('member');
+        //
     }
 
     /**
@@ -91,7 +81,6 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        $delData = member::where('ID', '=', $id)->delete();
-        return Redirect::route('member');
+        //
     }
 }

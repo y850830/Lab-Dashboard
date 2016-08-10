@@ -24,7 +24,7 @@
             </li>
             <br>
             <li>
-                <a href="http://localhost:8000/log" class = "sidebr_class">Log資訊</a>
+                <a href="http://localhost:8000/loginfo" class = "sidebr_class">Log資訊</a>
             </li>
         </ul>
     </div>

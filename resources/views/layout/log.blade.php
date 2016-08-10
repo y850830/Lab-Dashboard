@@ -1,4 +1,4 @@
-@extends('layout.frame')
+@extends('layout.LOframe')
 @section('content')
         <div class="container">
         <div id="page-content-wrapper">
@@ -6,23 +6,24 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
+                    	<br>
+                        <h1>人員管理</h1>
+                        <div style="top:45px;left:800px;position:absolute;">
+                            <button class="css_btn_class" data-toggle=modal data-target=#newModal>新增成員</button>
+                        </div>
                         <br>
-                        <h1>Log資訊</h1>
-					    <br>
-                        <br>
-                        <table class="TB_COLLAPSE">
+                        <table class="MB_COLLAPSE" id="MB">
                           <thead>
                             <tr>
-                              <th>登入帳號</th>
-                              <th>登入IP</th>
-                              <th>登入時間</th>
-                              <th>登出時間</th>
+                              <th>人員姓名</th>
+                              <th>聯絡資訊</th>
+                              <th>ID</th>
                             </tr>
                           </thead>
-                        </table>  
+                        </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
 @endsection

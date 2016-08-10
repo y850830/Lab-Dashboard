@@ -42,17 +42,6 @@
     }
     function delID(i) {
         ID = document.getElementById(i+"_3").innerHTML;
-        $(function() {
-            $.ajax({
-            method: "POST",
-            url: "member_del",
-            data: {
-                id: ID
-            },
-            success: function(response) {
-                alert(response);
-            }
-            });
-        });
+        location.href="member_del/"+ID;
     }
 </script>

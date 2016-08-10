@@ -34,13 +34,13 @@ Route::post('member_edit',['as'=>'member_edit','uses'=>'MemberController@update'
 
 Route::post('member_new',['as'=>'member_new','uses'=>'MemberController@create']);
 
-Route::post('member_del',['as'=>'member_del','uses'=>'MemberController@destroy']);
+Route::get('member_del/{id}',['as'=>'member_del','uses'=>'MemberController@destroy']);
 
 Route::get('forum',['as'=>'forum','uses'=>'ForumController@index']);
 
 Route::post('forum_edit',['as'=>'forum_edit','uses'=>'ForumController@update']);
 
-Route::get('log',['as'=>'log','uses'=>'LogController@index']);
+Route::get('loginfo',['as'=>'loginfo','uses'=>'LoginfoController@index']);
 
 Route::get('forumedit',function(){
 	return view('layout.forumedit');
