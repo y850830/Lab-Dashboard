@@ -42,7 +42,4 @@ Route::post('forum_edit',['as'=>'forum_edit','uses'=>'ForumController@update']);
 
 Route::get('loginfo',['as'=>'loginfo','uses'=>'LoginfoController@index']);
 
-Route::get('forumedit',function(){
-	return view('layout.forumedit');
-});
 

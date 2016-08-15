@@ -27,7 +27,7 @@
                       "<label id="+(i+1)+"_3>"+txtArr[i]['ID']+"</label>" 
                   ),
                   $("<td>").html( 
-                      "<button  class=css_btn_class onclick=delID("+(i+1)+");>刪除</button>" 
+                      "<button  class=css_btn_class onclick=delCheck("+(i+1)+");>刪除</button>" 
                   ),
                   $("<td>").html( 
                       "<button  class=css_btn_class data-toggle=modal data-target=#editModal onclick=setEdit("+(i+1)+");>編輯</button>" 
@@ -40,6 +40,15 @@
         ID = document.getElementById(i+"_3").innerHTML;
         document.getElementById("ID").value = ID;     
     }
+
+    function delCheck(i){
+        var r = confirm("確定要刪除嗎?");
+        if (r == true) {
+            delID(i);
+        } else {
+        }
+    }
+
     function delID(i) {
         ID = document.getElementById(i+"_3").innerHTML;
         location.href="member_del/"+ID;

@@ -79,7 +79,8 @@ class MemberController extends Controller
     public function update(Request $request)
     {
         $input = Input::get();
-        $up = member::where('ID', '=', $input['ID'])->update(array('name' => $input['name'],'cellphone' => $input['cellphone'],'ID' => $input['ID']));
+        $id = $input['ID'];
+        $up = member::where('ID', '=', $id)->update(array('name' => $input['name'],'cellphone' => $input['cellphone'],'ID' => $input['ID']));
         return Redirect::route('member');
     }
 

@@ -29,6 +29,8 @@
         }
         function setEdit(i){
             title = document.getElementById(i+"_1").innerHTML;
-            document.getElementById("title").value = title;     
+            context = document.getElementById(i+"_2").innerHTML;
+            document.getElementById("title").value = title;
+            document.getElementById("context").value = context;     
         }
 </script>
