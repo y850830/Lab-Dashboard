@@ -11,4 +11,24 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+
+    for(var i = 0 ; i < LFcount ; i++){ 
+        $("#LF").append( 
+            $("<tr>").append( 
+                $("<td>").html( 
+                    "<label id="+(i+1)+"_1>"+txtArr[i]['account']+"</label>" 
+                ), 
+                $("<td>").html( 
+                    "<label id="+(i+1)+"_2>"+txtArr[i]['IP']+"</label>" 
+                ),
+                $("<td>").html( 
+                    "<label id="+(i+1)+"_2>"+txtArr[i]['created_at']+"</label>" 
+                ),  
+                $("<td>").html( created_at
+                    "<label id="+(i+1)+"_2>"+txtArr[i]['updated_at']+"</label>" 
+                )   
+            ) 
+        );
+    }
+        
 </script>

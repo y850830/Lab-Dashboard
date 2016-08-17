@@ -26,5 +26,8 @@
             <li>
                 <a href="http://localhost:8000/loginfo" class = "sidebr_class">Log資訊</a>
             </li>
+            <li>
+                <a href="http://localhost:8000/log_out" class = "sidebr_class">登出</a>
+            </li>
         </ul>
     </div>

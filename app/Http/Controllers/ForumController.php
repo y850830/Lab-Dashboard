@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Input;
 
+use Illuminate\Support\Facades\Redirect; 
+
 use App\Http\Requests;
 
 use App\Models\forum;
+
+use App\Models\log;
 
 class ForumController extends Controller
 {
@@ -19,8 +23,21 @@ class ForumController extends Controller
      */
     public function index()
     {
-        $post = forum::all();
-        return view('layout.forum',['post' => $post]);
+        $i=0;
+        $status = log::all();
+        $ldata = null;
+        foreach ($status as $key => $data) {
+            $ldata[$i] = $data;
+            $i++;
+        }
+               
+        if($ldata[0]['logstatus'] == 1){
+            $post = forum::all();
+            return view('layout.forum',['post' => $post]);
+        }
+        else{
+            return Redirect::route('/');
+        }
     }
 
     /**
@@ -78,7 +95,7 @@ class ForumController extends Controller
         $input = Input::get();
         $up = forum::where('title', '=', $input['title'])->update(array('title' => $input['title'],'context' => $input['context']));
         $post = forum::all();
-        return view('layout.forum',['post' => $post]);
+        return Redirect::route('forum');
     }
 
     /**

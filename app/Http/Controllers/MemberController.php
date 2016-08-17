@@ -12,6 +12,8 @@ use App\Http\Requests;
 
 use App\Models\member;
 
+use App\Models\log;
+
 class MemberController extends Controller
 {
     /**
@@ -21,8 +23,21 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $post = member::all();
-        return view('layout.member',['post' => $post]);
+        $i=0;
+        $status = log::all();
+        $ldata = null;
+        foreach ($status as $key => $data) {
+            $ldata[$i] = $data;
+            $i++;
+        }
+
+        if($ldata[0]['logstatus'] == 1){
+            $post = member::all();
+            return view('layout.member',['post' => $post,'status' => $status]);
+        }
+        else{
+            return Redirect::route('/');
+        }
     }
 
     /**

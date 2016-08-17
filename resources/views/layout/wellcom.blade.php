@@ -32,7 +32,7 @@
             </li>
             <br>
             <li>
-                <a href="http://localhost:8000/log" class = "sidebr_class">Log資訊</a>
+                <a href="http://localhost:8000/loginfo" class = "sidebr_class">Log資訊</a>
             </li>
         </ul>
     </div>
@@ -43,6 +43,27 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1>Wellcome to Lab</h1>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        {{ Form::open(array('route' => 'log_in')) }}
+
+                            <div class="form-group">
+                            {{ Form::label('email', 'AD帳號') }}
+                            {{Form::email('email','')}}
+                            </div>
+
+                            <div class="form-group">
+                            {{ Form::label('password', 'AD密碼') }}
+                            {{Form::password('password','')}}
+                            </div>
+
+                            <button class="btn btn-success" type="submit">確認</button>
+
+                        {{ Form::close() }}
                     </div>
                 </div>
             </div>

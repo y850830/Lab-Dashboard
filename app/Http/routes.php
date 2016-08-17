@@ -11,11 +11,6 @@
 |
 */
 use App\Models\member;
-
-Route::get('/',function(){
-	return view('layout.wellcom');
-});
-
 // Route::get('test',function(){
 // 	$post = member::all();
 // 	$data = null;
@@ -27,6 +22,7 @@ Route::get('/',function(){
 // 	$i = 5;
 // 	echo $data[5]['name'];
 // });
+Route::get('/',['as'=>'/','uses'=>'LoginfoController@index']);
 
 Route::get('member',['as'=>'member','uses'=>'MemberController@index']);
 
@@ -40,6 +36,10 @@ Route::get('forum',['as'=>'forum','uses'=>'ForumController@index']);
 
 Route::post('forum_edit',['as'=>'forum_edit','uses'=>'ForumController@update']);
 
-Route::get('loginfo',['as'=>'loginfo','uses'=>'LoginfoController@index']);
+Route::get('loginfo',['as'=>'loginfo','uses'=>'LoginfoController@loginfo']);
+
+Route::get('log_out',['as'=>'log_out','uses'=>'LoginfoController@logout']);
+
+Route::post('log_in',['as'=>'log_in','uses'=>'LoginfoController@login']);
 
 

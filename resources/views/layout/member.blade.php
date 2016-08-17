@@ -7,7 +7,6 @@
             $mdata[$i] = $data;
             $i++;
         }
-        $i=0;
     ?>
     <script>
         var ID=0;
