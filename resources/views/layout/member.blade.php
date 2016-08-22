@@ -1,4 +1,6 @@
-@extends('layout.MBframe')
+@extends('layout.MBmaster')
+@section('title','人員管理')
+@section('pagename','人員管理')
 @section('content')
     <?php
         $i=0;

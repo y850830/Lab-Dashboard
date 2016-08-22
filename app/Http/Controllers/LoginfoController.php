@@ -31,7 +31,7 @@ class LoginfoController extends Controller
             $i++;
         }
         if($ldata[0]['logstatus'] == 0){
-            return view('layout.wellcom');
+            return view('layout.login');
         }
         else{
             return Redirect::route('forum');
@@ -88,9 +88,18 @@ class LoginfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $i=0;
+        $status = loginfo::all();
+        $ldata = null;
+        foreach ($status as $key => $data) {
+            $ldata[$i] = $data;
+            $i++;
+        }
+        $loginfo = loginfo::find($i)->update(array('created_at' => $ldata[($i-1)]['created_at']));
+        $status = log::where('email', '=', '40343236@gmail.com')->update(array('logstatus' => 0));
+        return Redirect::route('/');
     }
 
     /**
@@ -105,18 +114,18 @@ class LoginfoController extends Controller
     }
 
     public function login(){
-        $input = Input::get();
-        $email = $input['email'];
-        $password = $input['password'];
-        if($email == '40343236@gmail.com' && $password == 'v32165490'){
-            $loginfo = loginfo::create(array('account'=>$input['email'],'IP'=>'127.0.0.1'));
+        // $input = Input::get();
+        // $email = $input['email'];
+        // $password = $input['password'];
+        // if($email == '40343236@gmail.com' && $password == 'v32165490'){
+        //     $loginfo = loginfo::create(array('account'=>$input['email'],'IP'=>'127.0.0.1'));
             $status = log::where('email', '=', '40343236@gmail.com')->update(array('logstatus' => 1));
             return Redirect::route('forum');
-        }
-        else
-        {
-            return Redirect::route('/');
-        }
+        // }
+        // else
+        // {
+        //     return Redirect::route('/');
+        // }
     }
 
     public function loginfo(){
@@ -136,10 +145,5 @@ class LoginfoController extends Controller
         else{
             return Redirect::route('/');
         }       
-    }
-
-    public function logout(){
-        $status = log::where('email', '=', '40343236@gmail.com')->update(array('logstatus' => 0));
-        return Redirect::route('/');
     }
 }

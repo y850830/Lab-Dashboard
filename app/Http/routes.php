@@ -10,18 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-use App\Models\member;
-// Route::get('test',function(){
-// 	$post = member::all();
-// 	$data = null;
-// 	$i = 0;
-// 	foreach ($post as $key => $pos) {
-// 		$data[$i] = $pos;
-// 		$i++;
-// 	}
-// 	$i = 5;
-// 	echo $data[5]['name'];
-// });
+
 Route::get('/',['as'=>'/','uses'=>'LoginfoController@index']);
 
 Route::get('member',['as'=>'member','uses'=>'MemberController@index']);
@@ -38,8 +27,8 @@ Route::post('forum_edit',['as'=>'forum_edit','uses'=>'ForumController@update']);
 
 Route::get('loginfo',['as'=>'loginfo','uses'=>'LoginfoController@loginfo']);
 
-Route::get('log_out',['as'=>'log_out','uses'=>'LoginfoController@logout']);
+Route::get('log_out',['as'=>'log_out','uses'=>'LoginfoController@update']);
 
-Route::post('log_in',['as'=>'log_in','uses'=>'LoginfoController@login']);
+Route::get('log_in',['as'=>'log_in','uses'=>'LoginfoController@login']);
 
 

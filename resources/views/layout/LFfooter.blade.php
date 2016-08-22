@@ -24,7 +24,7 @@
                 $("<td>").html( 
                     "<label id="+(i+1)+"_2>"+txtArr[i]['created_at']+"</label>" 
                 ),  
-                $("<td>").html( created_at
+                $("<td>").html(
                     "<label id="+(i+1)+"_2>"+txtArr[i]['updated_at']+"</label>" 
                 )   
             ) 
