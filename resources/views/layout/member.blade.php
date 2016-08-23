@@ -1,8 +1,6 @@
 @extends('layout.MBmaster')
-@section('title','人員管理')
-@section('pagename','人員管理')
 @section('content')
-    <?php
+   <?php
         $i=0;
         $mdata = null;
         foreach ($post as $key => $data) {
@@ -18,14 +16,13 @@
     </script>
         <div class="container">
         <div id="page-content-wrapper">
-            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                     	<br>
                         <h1>人員管理</h1>
                         <div style="top:45px;left:800px;position:absolute;">
-                            <button class="css_btn_class" data-toggle=modal data-target=#newModal>新增成員</button>
+                            <a role="button" class="button button-thirdary" style="position: relative;font-size: 20px;left: 10%" class="css_btn_class" data-toggle=modal data-target=#newModal>新增成員</a>
                         </div>
                         <br>
                         <table class="MB_COLLAPSE" id="MB">

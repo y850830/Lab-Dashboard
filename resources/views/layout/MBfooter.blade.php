@@ -82,10 +82,10 @@
                       "<label id="+(i+1)+"_3>"+txtArr[i]['ID']+"</label>" 
                   ),
                   $("<td>").html( 
-                      "<button  class=css_btn_class onclick=delCheck("+(i+1)+");>刪除</button>" 
+                      "<a role=button class=button style=font-size: 20px; onclick=delCheck("+(i+1)+");>刪除</a>" 
                   ),
                   $("<td>").html( 
-                      "<button  class=css_btn_class data-toggle=modal data-target=#editModal onclick=setEdit("+(i+1)+");>編輯</button>" 
+                      "<a role=button class=button  button-secondary style=font-size: 20px; data-toggle=modal data-target=#editModal onclick=setEdit("+(i+1)+");>編輯</a>" 
                   )  
               ) 
           );

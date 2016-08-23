@@ -1,4 +1,4 @@
-@extends('layout.FRframe')
+@extends('layout.FRmaster')
 @section('content')
     <?php
         $i=0;
@@ -17,7 +17,6 @@
     </script>
         <div class="container">
         <div id="page-content-wrapper">
-            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">

@@ -19,7 +19,7 @@ Route::post('member_edit',['as'=>'member_edit','uses'=>'MemberController@update'
 
 Route::post('member_new',['as'=>'member_new','uses'=>'MemberController@create']);
 
-Route::get('member_del/{id}',['as'=>'member_del','uses'=>'MemberController@destroy']);
+Route::get('member_del/{id?}',['as'=>'member_del','uses'=>'MemberController@destroy']);
 
 Route::get('forum',['as'=>'forum','uses'=>'ForumController@index']);
 
