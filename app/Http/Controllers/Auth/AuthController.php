@@ -7,7 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use Socialite;
 class AuthController extends Controller
 {
     /*
@@ -28,8 +28,10 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
-
+    protected $redirectTo = "/log/login";
+ 
+    protected $username = 'username';
+    
     /**
      * Create a new authentication controller instance.
      *
@@ -49,9 +51,11 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'username' => 'required|max:255',
             'password' => 'required|min:6|confirmed',
+            'mail'     => 'required',
+            'displayName' => 'required',
+            'description' => 'required',
         ]);
     }
 
@@ -64,9 +68,11 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
+            'mail'     => 'required',
+            'displayName' => 'required',
+            'description' => 'required',
         ]);
     }
 }

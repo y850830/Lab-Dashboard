@@ -22,7 +22,7 @@
                     	<br>
                         <h1>人員管理</h1>
                         <div style="top:45px;left:800px;position:absolute;">
-                            <a role="button" class="button button-thirdary" style="position: relative;font-size: 20px;left: 10%" class="css_btn_class" data-toggle=modal data-target=#newModal>新增成員</a>
+                            <a role="button" class="button button-thirdary" style="position: relative;font-size: 20px;left: 87%" data-toggle=modal data-target=#newModal>新增成員</a>
                         </div>
                         <br>
                         <table class="MB_COLLAPSE" id="MB">

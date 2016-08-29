@@ -10,25 +10,34 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::auth();
+Route::get('auth/login',['as' => 'google.auth', 'uses' => 'GoogleController@redirectToGoogle']);
+Route::get('auth/callback', 'GoogleController@handleGoogleCallback');
 
-Route::get('/',['as'=>'/','uses'=>'LoginfoController@index']);
+Route::group(['middleware' =>'auth'],function(){
 
-Route::get('member',['as'=>'member','uses'=>'MemberController@index']);
+    Route::get('/',['as' => 'home', function () {
+        return view('pages.index',['mainTitle' => '']);
+    }]);
 
-Route::post('member_edit',['as'=>'member_edit','uses'=>'MemberController@update']);
+    Route::group(['prefix' => 'forum'],function(){
+    Route::get('/',['as' => 'forum',  'uses' => 'ForumController@index']);
+    Route::patch('/{id?}',['as' => 'forum.update','uses' => 'ForumController@update']);
+    });
+    
+    Route::group(['prefix' => 'manager'],function(){    
+        Route::get('/',['as' => 'manager', 'uses' => 'UsersController@index']);
+        Route::post('/store',['as' => 'manager.store','uses' => 'UsersController@store']);
+        Route::patch('/{id?}',['as' => 'manager.update','uses' => 'UsersController@update']);
+        Route::delete('maager/delete/{id?}',['as' => 'manager.delete','uses' => 'UsersController@destroy']); 
+    });
 
-Route::post('member_new',['as'=>'member_new','uses'=>'MemberController@create']);
+    Route::group(['prefix' => 'log'],function(){
+        Route::get('/',['as' => 'log', 'uses' => 'LogsController@index']);
+        Route::get('login',['as' => 'log.in', 'uses' => 'LogsController@create']);
+        Route::post('logout',['as' => 'log.out', 'uses' => 'LogsController@update']);
+    });
 
-Route::get('member_del/{id?}',['as'=>'member_del','uses'=>'MemberController@destroy']);
-
-Route::get('forum',['as'=>'forum','uses'=>'ForumController@index']);
-
-Route::post('forum_edit',['as'=>'forum_edit','uses'=>'ForumController@update']);
-
-Route::get('loginfo',['as'=>'loginfo','uses'=>'LoginfoController@loginfo']);
-
-Route::get('log_out',['as'=>'log_out','uses'=>'LoginfoController@update']);
-
-Route::get('log_in',['as'=>'log_in','uses'=>'LoginfoController@login']);
+});
 
 

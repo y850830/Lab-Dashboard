@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class log extends Model
+class Log extends Model
 {
-    protected $table = 'logtest';
-    protected $fillable = ['email','password','logstatus'];
+    protected $table = 'logs';
+    protected $fillable = ['logInAC','logInTime','IP','logOutTime'];
 }
