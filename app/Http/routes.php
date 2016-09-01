@@ -22,14 +22,16 @@ Route::group(['middleware' =>'auth'],function(){
 
     Route::group(['prefix' => 'forum'],function(){
     Route::get('/',['as' => 'forum',  'uses' => 'ForumController@index']);
+    Route::post('/store',['as' => 'forum.store','uses' => 'ForumController@store']);
     Route::patch('/{id?}',['as' => 'forum.update','uses' => 'ForumController@update']);
+    Route::delete('/delete/{id?}',['as' => 'forum.delete','uses' => 'ForumController@destroy']);
     });
     
     Route::group(['prefix' => 'manager'],function(){    
         Route::get('/',['as' => 'manager', 'uses' => 'UsersController@index']);
         Route::post('/store',['as' => 'manager.store','uses' => 'UsersController@store']);
         Route::patch('/{id?}',['as' => 'manager.update','uses' => 'UsersController@update']);
-        Route::delete('maager/delete/{id?}',['as' => 'manager.delete','uses' => 'UsersController@destroy']); 
+        Route::delete('maager/delete/{id?}',['as' => 'manager.delete','uses' => 'UsersController@destroy']);
     });
 
     Route::group(['prefix' => 'log'],function(){

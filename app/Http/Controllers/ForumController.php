@@ -48,7 +48,12 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Gate::allows('show', Auth::user()) && Auth::user()->cannot('member')){
+            $request['updated_at'] = Carbon::now()->setTimezone('Asia/Taipei');
+            forum::create($request->except('_token'));
+        return redirect()->route('forum');
+        }
+        return view('home');
     }
 
     /**
@@ -82,8 +87,12 @@ class ForumController extends Controller
      */
     public function update(Request $request)
     {
-        forum::all()->last()->update($request->except('_token'));
+        if(Gate::allows('show', Auth::user()) && Auth::user()->cannot('member')){
+            $request['updated_at'] = Carbon::now()->setTimezone('Asia/Taipei');
+            forum::all()->last()->update($request->except('_token'));
         return redirect()->route('forum');
+        }
+        return View('home');
     }
 
     /**
@@ -94,6 +103,10 @@ class ForumController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Gate::allows('show', Auth::user()) && Auth::user()->cannot('member')){
+            forum::destroy($id);
+            return redirect()->route('forum');
+        }
+        return redirect()->route('home');
     }
 }
